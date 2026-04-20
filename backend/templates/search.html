@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search - Social Connect Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .search-form-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .search-form {
+            text-align: left;
+            max-width: 400px;
+        }
+        .vertical-layout {
+            display: block;
+        }
+        .vertical-layout .card {
+            margin: 20px auto;
+            width: 60%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Find Influencers</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/profiles">Profiles</a>
+        <a href="/all-profiles">All Profiles</a>
+        <a href="/favorites">Favorites</a>
+        <a href="/upload-profile">Upload Profile</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main class="vertical-layout">
+    <div class="search-form-container">
+        <form method="POST" class="search-form">
+            <label>Search by name:</label>
+            <input type="text" name="name"><br>
+            <label>Platform:</label>
+            <select name="platform">
+                <option value="">Any</option>
+                <option>Instagram</option>
+                <option>YouTube</option>
+                <option>Facebook</option>
+            </select><br>
+            <label>Min Followers:</label>
+            <input type="number" name="followers"><br>
+            <label>Keyword in promotions:</label>
+            <input type="text" name="keyword"><br>
+            <label>Sort by:</label>
+            <select name="sort_by">
+                <option value="name">Name</option>
+                <option value="followers">Followers (High to Low)</option>
+                <option value="platform">Platform</option>
+            </select><br><br>
+            <button type="submit" class="btn">SEARCH</button>
+        </form>
+    </div>
+
+    {% if influencers %}
+    <h3>Search Results</h3>
+    {% for inf in influencers %}
+    <div class="card">
+        <h3>{{ inf['name'] }}</h3>
+        <p>Platform: {{ inf['platform'] }}</p>
+        <p>Followers: {{ inf['followers'] }}</p>
+        <p>Promotions: {{ inf['promotions'] }}</p>
+        <p>Email: {{ inf['email'] }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h3>All Profiles</h3>
+    {% for inf in all_influencers %}
+    <div class="card">
+        <h3>{{ inf['name'] }}</h3>
+        <p>Platform: {{ inf['platform'] }}</p>
+        <p>Followers: {{ inf['followers'] }}</p>
+        <p>Promotions: {{ inf['promotions'] }}</p>
+        <p>Email: {{ inf['email'] }}</p>
+    </div>
+    {% endfor %}
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Social Connect Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/all-profiles">All Profiles</a>
+        <a href="/upload-profile">Upload Profile</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    <h2>Welcome, {{ user }}</h2>
+    <div class="card">
+        <p>Total registered users: {{ user_count }}</p>
+        <p>Total influencer profiles: {{ influencer_count }}</p>
+        <p>Total favorite entries: {{ favorite_count }}</p>
+    </div>
+    <h3>Influencers</h3>
+    {% for inf in influencers %}
+    <div class="card">
+        <h3>{{ inf['name'] }}</h3>
+        <p>Platform: {{ inf['platform'] }}</p>
+        <p>Followers: {{ inf['followers'] }}</p>
+        <p>Promotions: {{ inf['promotions'] }}</p>
+        <p>Email: {{ inf['email'] }}</p>
+    </div>
+    {% endfor %}
+</main>
+</body>
+</html>

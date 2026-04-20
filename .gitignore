@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*$py.class
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+.env
+.env.*
+.vercel
+*.log
+.DS_Store
+Thumbs.db
+social_connect.db

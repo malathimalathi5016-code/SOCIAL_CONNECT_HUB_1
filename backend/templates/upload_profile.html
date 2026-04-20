@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Profile - Social Connect Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Upload New Influencer Profile</h1>
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/all-profiles">All Profiles</a>
+        <a href="/favorites">Favorites</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Platform:</label>
+        <input type="text" name="platform" required>
+        <label>Followers:</label>
+        <input type="number" name="followers" required>
+        <label>Promotions:</label>
+        <textarea name="promotions"></textarea>
+        <label>Contact Email:</label>
+        <input type="email" name="email">
+        <button type="submit">Upload Profile</button>
+    </form>
+</main>
+</body>
+</html>

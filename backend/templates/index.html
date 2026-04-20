@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Social Connect Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Social Connect Hub</h1>
+        <nav>
+            <a href="/">Home</a>
+            {% if session.user %}
+                <a href="/profiles">Profiles</a>
+                <a href="/search">Search</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        <h2>One Platform. Many Creators. Endless Promotions.</h2>
+        <p>Discover and connect with influencers across Instagram, YouTube, and Facebook—all in one place.</p>
+        {% if session.user %}
+            <a href="/search" class="btn">Start Searching</a>
+        {% else %}
+            <a href="/register" class="btn">Get Started</a>
+        {% endif %}
+    </main>
+</body>
+</html>

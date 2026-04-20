@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Profiles - Social Connect Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>All Influencer Profiles</h1>
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/profiles">Profiles</a>
+        <a href="/search">Search</a>
+        <a href="/favorites">Favorites</a>
+        <a href="/upload-profile">Upload Profile</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    {% for inf in influencers %}
+    <div class="card">
+        <h3>{{ inf['name'] }}</h3>
+        <p>Platform: {{ inf['platform'] }}</p>
+        <p>Followers: {{ inf['followers'] }}</p>
+        <p>Promotions: {{ inf['promotions'] }}</p>
+        <p>Email: {{ inf['email'] }}</p>
+        <a href="{{ url_for('favorite', influencer_id=inf['id']) }}" class="btn">Add to Favorites</a>
+    </div>
+    {% endfor %}
+</main>
+</body>
+</html>
