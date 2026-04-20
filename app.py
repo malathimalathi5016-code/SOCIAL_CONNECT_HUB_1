@@ -212,6 +212,7 @@ def search():
     conn.close()
     return render_template("search.html", influencers=influencers, all_influencers=all_influencers)
 
+
 import os
 
 if __name__ == "__main__":
